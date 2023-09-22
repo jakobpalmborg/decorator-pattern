@@ -5,6 +5,8 @@ public class App {
         Product milk = new Product("Milk", 19.0, 1);
         Product butter = new Product("Butter", 70.0, 1);
 
+        ShoppingCart myShoppingCart = new ShoppingCart(5, true)
+
         // Friday Discount
         ShoppingCart fridayShoppingCart = new ShoppingCart(6, true);
         ShoppingCart notFridayShoppingCart = new ShoppingCart(3, false);
