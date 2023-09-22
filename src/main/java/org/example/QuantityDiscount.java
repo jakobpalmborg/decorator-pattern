@@ -9,11 +9,12 @@ public class QuantityDiscount extends BaseDiscount{
 
     @Override
     protected boolean isApplicable(Product product, ShoppingCart shoppingCart) {
-        return false;
+        return shoppingCart.getNumberOfItems() >= 5;
     }
 
     @Override
     protected double calculateDiscount(Product product, ShoppingCart shoppingCart) {
+        if (isApplicable(product, shoppingCart)) return product.getPrice() - 10.0;
         return 0;
     }
 
