@@ -20,15 +20,11 @@ public class FridayDiscount extends BaseDiscount {
 
     @Override
     public double apply(Product product, ShoppingCart shoppingCart) {
-        if (nextDiscount == null) {
-            return calculateDiscount(product, shoppingCart);
-        } else {
-            return calculateDiscount(product, shoppingCart) + nextDiscount.apply(product, shoppingCart);
-        }
+        return calculateDiscount(product, shoppingCart) + nextDiscount.apply(product, shoppingCart);
     }
 
     @Override
     public String getDescription(Product product) {
-        return "Friday discount";
+        return "Friday discount, " + nextDiscount.getDescription(product);
     }
 }
