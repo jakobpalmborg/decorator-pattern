@@ -1,6 +1,6 @@
 package org.example;
 
-public class FridayDiscount extends BaseDiscount{
+public class FridayDiscount extends BaseDiscount {
 
 
     public FridayDiscount(Discount nextDiscount) {
@@ -8,21 +8,22 @@ public class FridayDiscount extends BaseDiscount{
     }
 
     @Override
-    protected boolean isApplicable(Product product) {
-        return true;
+    protected boolean isApplicable(Product product, ShoppingCart shoppingCart) {
+        return shoppingCart.isFriday();
     }
 
     @Override
-    protected double calculateDiscount(Product product) {
-        return 0;
+    protected double calculateDiscount(Product product, ShoppingCart shoppingCart) {
+        if (isApplicable(product, shoppingCart)) return product.getPrice() * 0.1;
+        else return 0;
     }
 
     @Override
-    public double apply(Product product) {
+    public double apply(Product product, ShoppingCart shoppingCart) {
         if (nextDiscount == null) {
-            return calculateDiscount(product);
+            return calculateDiscount(product, shoppingCart);
         } else {
-            return calculateDiscount(product) + nextDiscount.apply(product);
+            return calculateDiscount(product, shoppingCart) + nextDiscount.apply(product, shoppingCart);
         }
     }
 

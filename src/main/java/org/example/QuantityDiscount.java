@@ -8,21 +8,21 @@ public class QuantityDiscount extends BaseDiscount{
     }
 
     @Override
-    protected boolean isApplicable(Product product) {
+    protected boolean isApplicable(Product product, ShoppingCart shoppingCart) {
         return false;
     }
 
     @Override
-    protected double calculateDiscount(Product product) {
+    protected double calculateDiscount(Product product, ShoppingCart shoppingCart) {
         return 0;
     }
 
     @Override
-    public double apply(Product product) {
+    public double apply(Product product, ShoppingCart shoppingCart) {
         if (nextDiscount == null) {
-            return calculateDiscount(product);
+            return calculateDiscount(product, shoppingCart);
         } else {
-        return calculateDiscount(product) + nextDiscount.apply(product);
+        return calculateDiscount(product, shoppingCart) + nextDiscount.apply(product, shoppingCart);
         }
     }
 
