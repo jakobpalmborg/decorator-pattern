@@ -1,6 +1,8 @@
 package org.example;
 
+import java.math.BigDecimal;
+
 public interface Discount {
-    public int apply(Product product);
+    public double apply(Product product);
     public String getDescription(Product product);
 }
