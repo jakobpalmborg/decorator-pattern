@@ -14,7 +14,7 @@ public class QuantityDiscount extends BaseDiscount{
 
     @Override
     protected double calculateDiscount(Product product, ShoppingCart shoppingCart) {
-        if (isApplicable(product, shoppingCart)) return product.getPrice() - 10.0;
+        if (isApplicable(product, shoppingCart)) return 10.0;
         return 0;
     }
 
@@ -24,7 +24,8 @@ public class QuantityDiscount extends BaseDiscount{
     }
 
     @Override
-    public String getDescription(Product product) {
-       return "Quantity discount, " + nextDiscount.getDescription(product);
+    public String getDescription(Product product, ShoppingCart shoppingCart) {
+        if(isApplicable(product, shoppingCart)) return nextDiscount.getDescription(product, shoppingCart) + "Quantity discount, ";
+        else return nextDiscount.getDescription(product, shoppingCart);
     }
 }

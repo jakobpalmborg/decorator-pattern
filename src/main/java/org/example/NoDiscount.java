@@ -8,7 +8,7 @@ public class NoDiscount implements Discount {
     }
 
     @Override
-    public String getDescription(Product product) {
+    public String getDescription(Product product, ShoppingCart shoppingCart) {
         return "";
     }
 }

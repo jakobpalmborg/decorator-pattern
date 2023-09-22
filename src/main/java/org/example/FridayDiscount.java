@@ -24,7 +24,8 @@ public class FridayDiscount extends BaseDiscount {
     }
 
     @Override
-    public String getDescription(Product product) {
-        return "Friday discount, " + nextDiscount.getDescription(product);
+    public String getDescription(Product product, ShoppingCart shoppingCart) {
+        if (isApplicable(product, shoppingCart)) return nextDiscount.getDescription(product, shoppingCart) + "Friday discount, ";
+        else return nextDiscount.getDescription(product, shoppingCart);
     }
 }
