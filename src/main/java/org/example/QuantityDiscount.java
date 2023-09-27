@@ -1,6 +1,6 @@
 package org.example;
 
-public class QuantityDiscount extends BaseDiscount{
+public class QuantityDiscount extends BaseDiscount {
 
 
     public QuantityDiscount(Discount nextDiscount) {
@@ -9,7 +9,7 @@ public class QuantityDiscount extends BaseDiscount{
 
     @Override
     protected boolean isApplicable(Product product, ShoppingCart shoppingCart) {
-        return shoppingCart.getNumberOfItems() >= 5;
+        return shoppingCart.numberOfItems() >= 5;
     }
 
     @Override
@@ -25,7 +25,8 @@ public class QuantityDiscount extends BaseDiscount{
 
     @Override
     public String getDescription(Product product, ShoppingCart shoppingCart) {
-        if(isApplicable(product, shoppingCart)) return nextDiscount.getDescription(product, shoppingCart) + "Quantity discount, ";
+        if (isApplicable(product, shoppingCart))
+            return nextDiscount.getDescription(product, shoppingCart) + "Quantity discount, ";
         else return nextDiscount.getDescription(product, shoppingCart);
     }
 }

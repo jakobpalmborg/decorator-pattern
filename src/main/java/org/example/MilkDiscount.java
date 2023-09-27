@@ -2,19 +2,18 @@ package org.example;
 
 public class MilkDiscount extends BaseDiscount {
 
-
     public MilkDiscount(Discount nextDiscount) {
         super(nextDiscount);
     }
 
     @Override
     protected boolean isApplicable(Product product, ShoppingCart shoppingCart) {
-        return product.getName().equals("Milk");
+        return product.name().equals("Milk");
     }
 
     @Override
     protected double calculateDiscount(Product product, ShoppingCart shoppingCart) {
-        if (isApplicable(product, shoppingCart)) return product.getPrice() * 0.05;
+        if (isApplicable(product, shoppingCart)) return product.price() * 0.05;
         else return 0;
     }
 
@@ -25,7 +24,8 @@ public class MilkDiscount extends BaseDiscount {
 
     @Override
     public String getDescription(Product product, ShoppingCart shoppingCart) {
-        if(isApplicable(product, shoppingCart)) return nextDiscount.getDescription(product, shoppingCart) +  "Milk discount, ";
+        if (isApplicable(product, shoppingCart))
+            return nextDiscount.getDescription(product, shoppingCart) + "Milk discount, ";
         else return nextDiscount.getDescription(product, shoppingCart);
     }
 }

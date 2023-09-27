@@ -8,7 +8,6 @@ public abstract class BaseDiscount implements Discount {
         this.nextDiscount = nextDiscount;
     }
 
-
     protected abstract boolean isApplicable(Product product, ShoppingCart shoppingCart);
 
     protected abstract double calculateDiscount(Product product, ShoppingCart shoppingCart);

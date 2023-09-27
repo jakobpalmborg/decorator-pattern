@@ -16,14 +16,14 @@ public class GenericDiscountTest {
     void whenArgumentForIsApplicableIsTrueGetTheDescription() {
         Product milk = new Product("Milk", 19.0);
         ShoppingCart myShoppingCart = new ShoppingCart(5, true);
-        Discount genDiscount = new GenericDiscount(new NoDiscount(),((product, shoppingCart) -> product.getPrice() < 20),(product, shoppingCart) -> 1, "generic discount");
+        Discount genDiscount = new GenericDiscount(new NoDiscount(),((product, shoppingCart) -> product.price() < 20),(product, shoppingCart) -> 1, "generic discount");
         assertThat(genDiscount.getDescription(milk,myShoppingCart)).isEqualTo("generic discount");
     }
     @Test
     void whenArgumentForIsApplicableIsFalseThanYouGetAnEmptyStringAsTheDescription() {
         Product milk = new Product("Milk", 19.0);
         ShoppingCart myShoppingCart = new ShoppingCart(5, true);
-        Discount genDiscount = new GenericDiscount(new NoDiscount(),((product, shoppingCart) -> product.getPrice() < 18),(product, shoppingCart) -> 1, "generic discount");
+        Discount genDiscount = new GenericDiscount(new NoDiscount(),((product, shoppingCart) -> product.price() < 18),(product, shoppingCart) -> 1, "generic discount");
         assertThat(genDiscount.getDescription(milk,myShoppingCart)).isEqualTo("");
     }
 
@@ -31,7 +31,7 @@ public class GenericDiscountTest {
     void whenPassArgumentForCalculateDiscountThanGetTheRightResultBack() {
         Product milk = new Product("Milk", 19.0);
         ShoppingCart myShoppingCart = new ShoppingCart(5, true);
-        Discount genDiscount = new GenericDiscount(new NoDiscount(),(product, shoppingCart) -> true,(product, shoppingCart) -> product.getPrice() * 0.5, "generic discount");
+        Discount genDiscount = new GenericDiscount(new NoDiscount(),(product, shoppingCart) -> true,(product, shoppingCart) -> product.price() * 0.5, "generic discount");
         assertThat(genDiscount.apply(milk,myShoppingCart)).isEqualTo(9.5);
     }
 }
