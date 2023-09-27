@@ -4,7 +4,7 @@ public class App {
     public static void main(String[] args) {
         Product milk = new Product("Milk", 19.0);
         Product butter = new Product("Butter", 70.0);
-        
+
         // Friday Discount
         ShoppingCart fridayShoppingCart = new ShoppingCart(6, true);
         ShoppingCart notFridayShoppingCart = new ShoppingCart(3, false);
